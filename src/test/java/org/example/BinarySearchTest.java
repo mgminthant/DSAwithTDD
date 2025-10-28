@@ -17,7 +17,7 @@ class BinarySearchTest {
             "0,-1",
 
     })
-    public void testSearchWithParamerizedTest(int item, int expected) {
+    public void testSearchWithParametrizedTest(int item, int expected) {
         System.out.println("Item "+item+ " Expected "+expected);
 
         int index = BinarySearch.binarySearch(input, item);

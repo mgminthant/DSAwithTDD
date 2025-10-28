@@ -18,7 +18,7 @@ public class BinarySearch {
             }
             else if(arr[middle] < item)
             {
-                start = start + 1;
+                start = middle + 1;
             }
         }
         return -1;
