@@ -8,7 +8,8 @@ public class SortingTest {
 
     Util util = new Util();
 //    SortingAlgorithm sortingAlgo = new BubbleSort();
-    SortingAlgorithm sortingAlgo = new SelectionSort();
+//    SortingAlgorithm sortingAlgo = new SelectionSort();
+    SortingAlgorithm sortingAlgo = new InsertionSort();
     @Test
     public void testSort(){
 
@@ -23,6 +24,16 @@ public class SortingTest {
     public void testWithEmptyArray(){
 
         int [] arr = {};
+        sortingAlgo.sort(arr);
+
+        Assertions.assertTrue(util.isArray(arr));
+
+    }
+
+    @Test
+    public void testWithSameElements(){
+
+        int [] arr = {1,1,1,1,1};
         sortingAlgo.sort(arr);
 
         Assertions.assertTrue(util.isArray(arr));
@@ -51,8 +62,11 @@ public class SortingTest {
     @Test
     public void testWithRandomData(){
 
-        int [] arr = util.createRandomArray(50);
+        int [] arr = util.createRandomArray(10);
+
+        System.out.println("input"+ util.arrayToString(arr));
         sortingAlgo.sort(arr);
+        System.out.println("output"+ util.arrayToString(arr));
 
         Assertions.assertTrue(util.isArray(arr));
 
