@@ -13,7 +13,11 @@ public class Stack {
     }
 
     public void push (int value) {
-        this.arr[++top] = value;
+        if(this.arr.length-1 == top){
+            throw new IndexOutOfBoundsException("Stack is full can't add!");
+        }else {
+            this.arr[++top] = value;
+        }
     }
 
     public int peek () {
@@ -21,7 +25,11 @@ public class Stack {
     }
 
     public int pop () {
-        return top == -1 ? 0 : this.arr[top--];
+       if(top == -1 ){
+           throw new IndexOutOfBoundsException("stack is empty, can't pop !");
+       }else {
+           return this.arr[top--];
+       }
     }
 
     public boolean isEmpty () {
