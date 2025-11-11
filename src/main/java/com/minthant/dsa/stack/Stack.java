@@ -21,6 +21,10 @@ public class Stack {
     }
 
     public int pop () {
-        return this.arr[--top];
+        return top == -1 ? 0 : this.arr[top--];
+    }
+
+    public boolean isEmpty () {
+        return top == -1;
     }
 }

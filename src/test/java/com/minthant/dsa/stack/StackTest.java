@@ -1,5 +1,6 @@
 package com.minthant.dsa.stack;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,12 +31,19 @@ public class StackTest {
     }
 
     @Test
-    public void testPop ( ) {
+    public void testPop () {
         stack.push(300);
         stack.push(200);
         stack.push(100);
+        assertEquals(100, stack.pop());
         assertEquals(200, stack.pop());
-        assertEquals(2, stack.size());
+        assertEquals(1, stack.size());
     }
 
+    @Test
+    public void isEmpty () {
+        stack.push(100);
+        stack.pop();
+        Assertions.assertTrue(stack.isEmpty());
+    }
 }
