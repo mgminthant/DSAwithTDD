@@ -33,7 +33,12 @@ public class Delimiter {
                     return false;
                 }
 
-                stack.pop();
+               int startTagIndex = startTags.indexOf(stack.pop());
+                int endTagIndex = endTags.indexOf(ch);
+
+                if(startTagIndex!=endTagIndex){
+                    return false;
+                }
             }
 
         }

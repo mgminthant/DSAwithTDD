@@ -2,40 +2,23 @@ package com.minthant.dsa.stack;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class DelimiterTest {
-    @Test
-    public void testHappyCase(){
-        Delimiter delimiter = new Delimiter();
-        boolean result = delimiter.isValid("(20*5)");
-        Assertions.assertTrue(result);
-    }
+    Delimiter delimiter = new Delimiter();
 
-    @Test
-    public void testUnHappyCase(){
-        Delimiter delimiter = new Delimiter();
-        boolean result = delimiter.isValid("(20*5");
-        Assertions.assertFalse(result);
-    }
+    @ParameterizedTest
+    @CsvSource(value = {
+            "(20*5), true",
+            "' ', true",
+            "(20*5, false",
+            "[(20*5) * {2+5}], true",
+            "(}, false"
+    })
 
-    @Test
-    public void testHappyCase2(){
-        Delimiter delimiter = new Delimiter();
-        boolean result = delimiter.isValid("[(20*5) * {2+5}]");
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    public void testEmpty(){
-        Delimiter delimiter = new Delimiter();
-        boolean result = delimiter.isValid("");
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    public void testUnHappyCase2(){
-        Delimiter delimiter = new Delimiter();
-        boolean result = delimiter.isValid("}");
-        Assertions.assertFalse(result);
+    public void testDelimiter(String input, boolean expected){
+        boolean result = delimiter.isValid(input);
+        Assertions.assertEquals(expected,result);
     }
 }
